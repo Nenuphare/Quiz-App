@@ -15,7 +15,7 @@ const Home = () => {
 
   const [selectedDifficulty, setSelectedDifficulty] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [selectedNumber, setSelectedNumber] = useState("");
+  const [selectedNumber, setSelectedNumber] = useState("10");
 
   function paramsInURL(cat, diff , num){
     let url = `https://opentdb.com/api.php?amount=${encodeURIComponent(num)}&category=${encodeURIComponent(cat)}&difficulty=${encodeURIComponent(diff)}&type=multiple`;
