@@ -15,8 +15,15 @@ const Home = () => {
 
   const [selectedDifficulty, setSelectedDifficulty] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedNumber, setSelectedNumber] = useState("");
+
+  function paramsInURL(cat, diff , num){
+    let url = `https://opentdb.com/api.php?amount=${encodeURIComponent(num)}&category=${encodeURIComponent(cat)}&difficulty=${encodeURIComponent(diff)}&type=multiple`;
+    return url;
+  }
+
   const goToQuiz = () => {
-    navigation.navigate("Fetch", { selectedCategory, selectedDifficulty, selectedNumber });
+    navigation.navigate("Quiz", paramsInURL(selectedCategory, selectedDifficulty, selectedNumber) );
   };
 
 
@@ -26,7 +33,7 @@ const Home = () => {
       <View className="flex items-center mt-10">
         <Text className="font-semibold text-2xl">Quiz App</Text>
         <View className="flex items-center" style={{marginTop: 30}}>
-          <Text className="font-semibold text-l" style={{marginBottom: 10}}>Choisissez vos paramètre pour modifier la difficulté du quiz</Text>
+          <Text className="font-semibold text-l" style={{marginBottom: 10}}>Choisissez la difficulté du Quiz</Text>
           <View style={{ width: 150, borderWidth: 1, borderRadius: 4 }}>
             <Picker
               selectedValue={selectedDifficulty}
@@ -80,9 +87,9 @@ const Home = () => {
           <Text className="font-semibold text-l" style={{marginBottom: 10}}>Choisissez le nombre de questions du Quiz</Text>
           <View style={{ width: 150, borderWidth: 1, borderRadius: 4 }}>
             <Picker
-              selectedValue={selectedDifficulty}
+              selectedValue={selectedNumber}
               onValueChange={(itemValue, itemIndex) =>
-                setSelectedDifficulty(itemValue)
+                setSelectedNumber(itemValue)
               }>
               <Picker.Item label="10" value="10" />
               <Picker.Item label="20" value="20" />
