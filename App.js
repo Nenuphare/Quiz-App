@@ -6,8 +6,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import styles from './styles';
 import Home from './components/Home';
-import About from './components/About';
-import SearchScreen from './components/SearchScreen';
+import Quiz from './components/Quiz';
 
 
 
@@ -18,10 +17,10 @@ function HomeScreen(){
     </View>
   )
 }
-function AboutScreen(){
+function QuizScreen(){
   return(
     <View style={styles.container}>
-      <About/>
+      <Quiz/>
     </View>
   )
 }
@@ -37,7 +36,7 @@ export default function App() {
             let iconName;
             if (route.name === "Home") {
               iconName = focused ? "home" : "home-outline";
-            } else if (route.name === "About") {
+            } else if (route.name === "Quiz") {
               iconName = focused ? "person" : "person-outline";
             }
             return <Ionicons name={iconName} size={24} color={color} />;
@@ -48,8 +47,7 @@ export default function App() {
         })}
       >
         <TAB.Screen name="Home" component={HomeScreen} />
-        <TAB.Screen name="About" component={AboutScreen} />
-        <TAB.Screen name="Search" component={SearchScreen} />
+        <TAB.Screen name="Quiz" component={QuizScreen} />
       </TAB.Navigator>
     </NavigationContainer>
   );
